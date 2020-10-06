@@ -1,0 +1,82 @@
+<div class="container" style="border: 0px;">
+  <div class="row text-white">
+
+    <div class="col"></div>
+    <div class="col mx-auto text-center form p-4 w-auto">
+
+      <div class="jumbotron bg-dark w-auto">
+        <div class="px-2 w-auto">
+          <%= form_with(model: product, local: true, :html =>{:style => 'width:auto; overflow: auto;'}) do |form| %>
+
+            <% if product.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(product.errors.count, "error") %> prohibited this product from being saved:</h2>
+
+                <ul>
+                  <% product.errors.full_messages.each do |message| %>
+                    <li><%= message %></li>
+                  <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+              <div class="from-group">
+                <%= form.text_field :substancename, :placeholder => "SUBSTANCE NAME" %>
+              </div>
+
+              <div class="from-group">
+                <%= form.text_field :nonproprietaryname, :placeholder => "NON-PROPIETARY NAME" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :propname, :placeholder => "PROPRIETARY NAME" %>
+              </div>
+
+              <div class="form-group">
+                £<%= form.number_field :price, step: :"0.01",:placeholder => "0.00" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :producttype, :placeholder => "PRODUCT TYPE" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :dosageform, :placeholder => "PRODUCT FORM" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :routename, :placeholder => "ABSORPTION METHOD" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :marketingcategory, :placeholder => "PRODUCT CATEGORY" %>
+              </div>
+
+              <div class="field">
+                <%= form.number_field :activenumerator, :placeholder => "QUANTITY" %>
+              </div>
+
+              <div class="form-group">
+                <%= form.text_field :activeingredunit, :placeholder => "UNITS E.G MG" %>
+              </div>
+
+              <div class="col">
+                <div class="form-group w-auto" style="overflow: auto;">
+                  <%= form.label :seller_id %>
+                  <span><%= form.collection_select(:seller_id, @Seller, :id, :name) %></span>
+                </div>
+              </div>
+
+            <div class="actions">
+              <%= form.submit "Create Product", class: "btn btn-primary" %>
+            </div>
+        <% end %>
+      </div>
+    </div>
+  </div>
+
+    <div class="col"></div>
+
+    </div>
+
+</div>

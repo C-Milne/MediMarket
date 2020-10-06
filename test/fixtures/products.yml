@@ -1,0 +1,25 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  substancename: MyString
+  nonproprietaryname: MyString
+  propname: MyString
+  producttype: MyString
+  dosageform: MyString
+  routename: MyString
+  marketingcategory: MyString
+  activenumerator: 1
+  activeingredunit: MyString
+  seller: one
+
+two:
+  substancename: MyString
+  nonproprietaryname: MyString
+  propname: MyString
+  producttype: MyString
+  dosageform: MyString
+  routename: MyString
+  marketingcategory: MyString
+  activenumerator: 1
+  activeingredunit: MyString
+  seller: two

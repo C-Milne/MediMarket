@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-md bg-dark navbar-dark fixed-top">
+  <!-- Brand -->
+    <h3 style="color:white; vertical-align:center;">MediMarket</h3>
+
+  <!-- Toggler/collapsibe Button -->
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
+    <span class="navbar-toggler-icon"></span>
+  </button>
+
+  <!-- Navbar links -->
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <%= link_to "Home", home_index_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Sellers", sellers_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Products", products_path, class: "nav-link" %>
+      </li>
+
+      <% if @usertype.nil? or @usertype == "Guest" %>
+        <li class="nav-item">
+          <%= link_to "Create Seller Account", new_seller_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Seller Login", login_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Create Customer Account", new_user_path, class: "nav-link" %>
+        </li>
+        <li class="nav-item">
+          <%= link_to "Customer Login", loginUser_path, class: "nav-link" %>
+        </li>
+
+      <% elsif @usertype == "Seller" %>
+        <li class="nav-item">
+          <%= link_to "Seller Logout", logout_path, class: "nav-link" %>
+        </li>
+        <li style="color: white; margin-left: 10px;">
+          <a class="nav-link" href=<%= "/sellers/#{@CurrentSeller.id}" %>>
+            <%= "Logged in as #{@CurrentSeller.name}" %>
+          </a>
+        </li>
+
+      <% elsif @usertype == "Admin" %>
+      <li class="nav-item">
+        <%= link_to "Admin Controls", admin_path, class: "nav-link" %>
+      </li>
+      <li class="nav-item">
+        <%= link_to "Admin Logout", logout_path, class: "nav-link" %>
+      </li>
+      <li style="color: white; margin-left: 10px;">
+        <a class="nav-link" href=<%= "/users/#{@CurrentUser.id}" %>>
+          <%= "Logged in as #{@CurrentUser.name}" %>
+        </a>
+      </li>
+
+      <% elsif @usertype == "User" %>
+      <li class="nav-item">
+        <%= link_to "User Logout", logout_path, class: "nav-link" %>
+      </li>
+      <li style="color: white; margin-left: 10px;">
+        <a class="nav-link" href=<%= "/users/#{@CurrentUser.id}" %>>
+          <%= "Logged in as #{@CurrentUser.name}" %>
+        </a>
+      </li>
+      <% end %>
+
+      <% if @usertype == "User" %>
+        <% if !@cart.nil? %>
+          <li class="nav-item">
+            <a class="nav-link" href=<%= "/carts/#{@cart.id}" %>>
+              Cart [<%= cart_count_over_one %>]
+            </a>
+          </li>
+        <% end %>
+      <% end %>
+
+    </ul>
+  </div>
+</nav>
+
+<div class="jumbotron mt-0 pt-0 pb-0 mb-1" style="background-color:#FF0000">
+  <h4 class="text-wh" style="text-align: center;">This website is for demonstration purposes only!</h4>
+</div>

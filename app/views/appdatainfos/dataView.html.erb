@@ -1,0 +1,76 @@
+<div class="jumbotron bg-dark mx-3 my-1">
+  <h1 class="display-3 text-ps" style="text-align: center;"><%= "App Data Collected - Table view" %></h1>
+</div>
+
+<div class="jumbotron mx-0 my-0 py-0" style="background: #595959">
+  <center><h4 style="color: white;">Click on Table Rows to view a particular date</h4></center>
+</div>
+
+<%# pagination design from https://mislav.github.io/will_paginate/ %>
+<div class="nice_pagination">
+  <div class="page_info">
+    <%= page_entries_info @appdatainfos %>
+  </div>
+  <%= will_paginate @appdatainfos, :container => false %>
+</div>
+
+<% if @appdatainfos.length > 0 %>
+  <div class="row justify-content-center">
+    <div class="col-auto">
+      <table class="table table-striped table-hover table-responsive">
+        <thead class="thead-dark">
+        <tr>
+          <th>Date</th>
+          <th>Number of Sellers</th>
+          <th>Number of Users</th>
+          <th>Number of Products</th>
+          <th>Number of Carts</th>
+          <th>Number of Items in Carts</th>
+          <th>Average Product Price</th>
+          <th>Average Value of Cart</th>
+          <th>Average Items in Cart</th>
+          <th>Total # Records</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <% @appdatainfos.each do |appdatainfo| %>
+          <tr class='clickable-row' data-href='/appdatainfos/<%= appdatainfo.id %>' >
+            <td><%= appdatainfo.date %></td>
+            <td><%= appdatainfo.numseller %></td>
+            <td><%= appdatainfo.numuser %></td>
+            <td><%= appdatainfo.numproduct %></td>
+            <td><%= appdatainfo.numcarts %></td>
+            <td><%= appdatainfo.numcartitems %></td>
+            <td><%= "£#{appdatainfo.averageproductprice}" %></td>
+            <td><%= "£#{appdatainfo.averagecartvalue}" %></td>
+            <td><%= appdatainfo.averageitemsincart %></td>
+            <td><%= appdatainfo.totalRecords %></td>
+          </tr>
+        <% end %>
+        </tbody>
+        <script>
+        jQuery(document).ready(function($) {
+          $(".clickable-row").click(function() {
+            window.location = $(this).data("href");
+          });
+        });
+        </script>
+      </table>
+    </div>
+  </div>
+<% else %>
+  <div class="jumbotron mx-3">
+    <div class="row">
+      <div class="col"></div>
+      <div class="col">
+        <h2 style="text-align: center;">Thats weird there appears to be nothing here!</h2>
+      </div>
+      <div class="col"></div>
+    </div>
+  </div>
+<% end %>
+
+<div class="container-fluid">
+  <%= link_to "Back", :back, class: "btn btn-primary" %>
+</div>

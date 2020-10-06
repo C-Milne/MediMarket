@@ -1,0 +1,74 @@
+
+<div class="container-fluid px-5">
+  <div class="jumbotron py-3">
+    <h1 class="Display-4" style="text-align:center;"><%= @product.substancename %></h1>
+
+      <p class="lead mx-auto" style="text-align:center;">
+        <span class="font-weight-bold" style="align-content: center;">Non-Proprietary Name:</span>
+          <span class="font-weight-light"> <%= "\n" + @product.nonproprietaryname %></span>
+      </p>
+
+      <p class="lead mx-auto" style="text-align: center;">
+        <span class="font-weight-bold"> Proprietary Name:
+        <span class="font-weight-light"> <%= @product.propname %></span></span>
+      </p>
+
+    <p class="lead" style="text-align:center;">
+        <span class="font-weight-bold">Price:</span>
+      <%= "£#{@product.price}" %>
+    </p>
+
+      <p class="lead mx-auto" style="text-align:center;">
+        <span class="font-weight-bold" style="align-content: center;">Product Type:
+        <span class="font-weight-light"> <%= @product.producttype %></span></span>
+      </p>
+
+    <p class="lead mx-auto" style="text-align:center;">
+      <span class="font-weight-bold">Product Category:
+      <span class="font-weight-light"> <%= @product.marketingcategory %></span></span>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+        <span class="font-weight-bold">Product Form:</span>
+      <%= @product.dosageform %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+        <span class="font-weight-bold">Absorption Method:</span>
+      <%= @product.routename %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+        <span class="font-weight-bold">Unit per Pack:</span>
+      <%= @product.activenumerator %> / <%= @product.activeingredunit %>
+    </p>
+
+    <% if @usertype == "User" %>
+      <div class="d-flex justify-content-center">
+        <%= button_to 'Add to cart', line_items_path(product_id: @product.id), class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+
+    <% if @permission == true %>
+      <%= link_to "Edit", edit_product_path(@product), class: "btn btn-primary" %>|
+      <%= link_to "Destroy", @product, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+    <% end %>
+
+    <hr class="featurette-divider">
+
+    <a style="color:black; text-decoration: none; background-color: none;" href= <%= "/sellers/#{@product.seller_id}" %>>
+      <div class="jumbotron py-3 mx-1 bg-secondary">
+        <h2 class="dislay-2 text-ps" style="text-align:center">Product Seller</h2>
+        <h4 class="display-5 text-ps" style="text-align:center;"><%= @seller.name %></h4>
+      </div>
+    </a>
+
+  </div>
+</div>
+
+<% if @usertype == "Seller" %>
+  <% if @CurrentSeller.id == @product.seller.id %>
+    <%= link_to 'Edit', edit_product_path(@product), class: "btn btn-primary" %> |
+  <% end %>
+<% end %>
+<%= link_to 'Back', :back, class: "btn btn-primary" %>

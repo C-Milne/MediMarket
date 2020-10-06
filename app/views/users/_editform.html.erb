@@ -1,0 +1,58 @@
+<div class="container" style="border: 0px;">
+  <div class="row text-white">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 w-auto">
+      <div class="jumbotron bg-dark w-auto">
+        <div class="px-2 w-auto">
+          <%= form_with(model: user, local: true) do |form| %>
+            <% if user.errors.any? %>
+              <div id="error_explanation">
+                <h2><%= pluralize(user.errors.count, "error") %> prohibited this user from being saved:</h2>
+
+                <ul>
+                <% user.errors.full_messages.each do |message| %>
+                  <li><%= message %></li>
+                <% end %>
+                </ul>
+              </div>
+            <% end %>
+
+            <div class="field">
+              <%= form.label :name %>
+              <%= form.text_field :name %>
+            </div>
+
+            <div class="field">
+              <%= form.label :email %>
+              <%= form.text_field :email %>
+            </div>
+
+            <div class="jumbotron bg-dark mx-0 my-0, px-0 py-1 mb-1">
+              <h5 style="color: #f2f2f2;">Only complete this section if you want to set a new password</h5>
+              <div class="field">
+                <%= form.password_field :password, :placeholder => "PASSWORD" %>
+              </div>
+
+              <div class="field">
+                <%= form.password_field :password_confirmation, :placeholder => "CONFIRM PASSWORD" %>
+              </div>
+            </div>
+
+            <% if @usertype == "Admin" && !@user.admin or @CurrentUser.email == "admin@admin.com" %>
+              <div class="jumbotron bg-dark mx-0 my-0, px-0 py-1">
+                <h5 style="color: #f2f2f2;">Any information changed when this section is changed will not be saved</h5>
+                <div class="field">
+                  <%= form.label :admin, "Admin", :style => "color: #f2f2f2" %>
+                  <%= form.select(:admin, @BoolOptions, :selected => @BoolOptions[0]) %>
+                </div>
+              </div>
+            <% end %>
+
+            <div class="actions">
+              <%= form.submit "Update User", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

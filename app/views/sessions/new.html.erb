@@ -1,0 +1,24 @@
+<div class="jumbotron bg-dark mx-3 my-1" style="margin-bottom: 30rem;">
+    <h1 class="display-3 text-ps" style="text-align: center;"><%= "Seller Login" %></h1>
+</div>
+
+<div class="container" style="border: 0px;">
+  <div class="row text-white">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 w-auto">
+      <div class="jumbotron bg-dark w-auto">
+        <div class="px-2">
+          <%= form_for(:session, url:login_path) do |f| %>
+            <div class="form-group">
+              <%= f.text_field :name, placeholder: "NAME" %>
+            </div>
+            <div class="form-group">
+              <%= f.password_field :password, placeholder: "PASSWORD" %>
+            </div>
+            <%= f.submit "Log in", class:"btn btn-primary" %>
+          <% end %>
+        </div>
+        <p>New Seller?<%= link_to "Sign up Now!", new_seller_path %></p>
+      </div>
+    </div>
+  </div>
+</div>

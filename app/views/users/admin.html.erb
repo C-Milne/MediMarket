@@ -1,0 +1,34 @@
+<div class="jumbotron bg-dark mx-3 my-1">
+  <h1 class="display-3 text-ps" style="text-align: center;">Admin Controls</h1>
+</div>
+
+<div class="jumbotron mx-3 py-3 my-0">
+  <h2 class="display-4" style="text-align: center;">Quick Links</h2>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "User Records", users_path, class: "btn btn-primary", style: "margin-bottom: 5px;" %>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "Create Seller", new_seller_path, class: "btn btn-primary", style: "margin-bottom: 5px;" %>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to "Create User", new_user_path, class: "btn btn-primary", style: "margin-bottom: 5px;" %>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Add New Product', new_product_path, class: "btn btn-primary", style: "margin-bottom: 5px;" %>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to 'Cart Records', carts_path, class: "btn btn-primary", style: "margin-bottom: 5px;" %>
+  </div>
+
+  <div class="d-flex justify-content-center">
+    <%= link_to 'App Data records', appdatainfos_path, class: "btn btn-primary" %>
+  </div>
+
+</div>
+
+<%= link_to "Back", :back, class: "btn btn-primary", style: "margin-left: 15px; margin-top: 2px;" %>

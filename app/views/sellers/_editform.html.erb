@@ -1,0 +1,47 @@
+<div class="container" style="border: 0px;">
+  <div class="row text-white">
+    <div class="col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center form p-4 w-auto">
+      <div class="jumbotron bg-dark w-auto">
+        <div class="px-2 w-auto">
+          <%= form_with(model: seller, local: true) do |form| %>
+
+            <div class="field">
+              <%= form.label :name %>
+              <%= form.text_field :name %>
+            </div>
+
+            <div class="field">
+              <%= form.label :longitude %>
+              <%= form.text_field :longitude %>
+            </div>
+
+            <div class="field">
+              <%= form.label :latitude %>
+              <%= form.text_field :latitude %>
+            </div>
+
+            <div class="field">
+              <%= form.label :address %>
+              <%= form.text_field :address %>
+            </div>
+
+            <h5 style="color: #f2f2f2;">Only complete this section if you want to set a new password</h5>
+            <div class="field">
+              <%= form.password_field :password, :placeholder => "PASSWORD" %>
+            </div>
+
+            <div class="field">
+              <%= form.password_field :password_confirmation, :placeholder => "CONFIRM PASSWORD" %>
+            </div>
+
+            <br>
+
+            <div class="actions">
+              <%= form.submit "Edit Seller", class: "btn btn-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

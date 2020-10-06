@@ -1,0 +1,145 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ */
+
+ /* Custom bootstrap variables must be set or imported *before* bootstrap. */
+ @import "bootstrap";
+
+ .nav-item{
+   padding-left: 10px;
+ }
+
+ body {
+     padding-top: 65px;
+ }
+
+ .card:hover{
+   transform:scale(1.1);
+ }
+
+
+// style from https://mislav.github.io/will_paginate/
+ .nice_pagination {
+   background: #f1f1f1;
+   border: 1px solid #e5e5e5;
+   text-align: center;
+   padding: 1em;
+   cursor: default; }
+
+.nice_pagination a, .nice_pagination span {
+  padding: 0.2em 0.3em; }
+
+.nice_pagination .disabled {
+ color: #aaaaaa; }
+
+.nice_pagination .current {
+ font-style: normal;
+ font-weight: bold;
+ background-color: #bebebe;
+ display: inline-block;
+ width: 1.4em;
+ height: 1.4em;
+ line-height: 1.5;
+ -moz-border-radius: 1em;
+ -webkit-border-radius: 1em;
+ border-radius: 1em;
+ text-shadow: rgba(255, 255, 255, 0.8) 1px 1px 1px; }
+
+.nice_pagination a {
+ text-decoration: none;
+ color: black; }
+
+.nice_pagination a:hover, .nice_pagination a:focus {
+ text-decoration: underline; }
+// ###########################################################
+
+@media (max-width: 554px) {
+  .text-ps {
+    color: #f2f2f2;
+    font-size: 3rem;
+  }
+}
+
+@media (min-width: 554px){
+  .text-ps {
+    color: #f2f2f2;
+    font-size: 4.5rem;
+  }
+}
+
+.text-wh{
+  color: #f2f2f2;
+}
+
+.scrolling-wrapper {
+  overflow-x: scroll;
+  overflow-y: hidden;
+  white-space: nowrap;
+  height:auto;
+
+  .card{
+    display: inline-block;
+  }
+
+  .card-text{
+    text-overflow: ellipsis;
+  }
+}
+
+tr a {
+  display:block;
+  padding: 16px;
+}
+
+.nav-link{
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.cart-text{
+  padding-top: 1px;
+  margin-top: 1px;
+  padding-bottom: 1px;
+  margin-bottom: 1px;
+  color: black;
+}
+
+#greenNotice{
+  background-color: green;
+  color: white;
+  margin: 0 10px 0 10px;
+  padding: 0 0 0 20px;
+  border-radius: 25px;
+}
+
+#redNotice{
+  background-color: red;
+  color: black;
+  margin: 0 10px 0 10px;
+  padding: 0 0 0 20px;
+  border-radius: 25px;
+  font-weight: bold;
+}
+
+#greyNotice{
+  background-color: gray;
+  color: black;
+  margin: 0 10px 0 10px;
+  padding: 0 0 0 20px;
+  border-radius: 25px;
+}
+
+.form-text{
+  font-weight: bold;
+  padding-bottom:0;
+  margin-bottom: 0;
+}

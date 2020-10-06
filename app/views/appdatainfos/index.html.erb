@@ -1,0 +1,179 @@
+<div class="jumbotron bg-dark mx-3 my-1">
+    <h1 class="display-3 text-ps" style="text-align: center;"><%= "App Data Collected" %></h1>
+</div>
+
+<div class="jumbotron mx-3 my-1 py-2" style="background: #595959">
+  <center><h3 style="color: white;">Total Number of Records:</h3></center>
+  <center><h2 style="color: white;"><%= @CurrentNumRecords %></h2></center>
+  <center><h4 style="color: white;">Remember Heroku only allows 10,000 records</h4></center>
+</div>
+
+<%# Chart to track number of accounts %>
+<div id="container" style="width:100%;height:400px;">
+<script type="text/javascript">
+$(function () {
+var myChart = Highcharts.chart('container',{
+chart: {
+type: 'line'
+},
+title: {
+text: 'Account Tracker'
+},
+xAxis: {
+categories: <%= raw @dates.to_json %>
+},
+yAxis: {
+title: {
+text: 'Accounts'
+}
+},
+series: [{
+name: 'Sellers',
+data: <%= raw @sellerNumbers.to_json %>
+}, {
+  name: 'Users',
+  data: <%= raw @userNumbers.to_json %>
+}]
+});
+});
+$(document).ready(myChart)
+$(document).on('turbolinks:load', myChart)
+</script>
+</div>
+
+<hr class="featurette-divider">
+
+<%# Chart to track amount of products%>
+<div id="container2"></div>
+<script type="text/javascript">
+$(function () {
+var myChart2 = Highcharts.chart('container2',{
+chart: {
+type: 'line'
+},
+title: {
+text: 'Product Tracker'
+},
+xAxis: {
+categories: <%= raw @dates.to_json %>
+},
+yAxis: {
+title: {
+text: 'Products'
+}
+},
+series: [{
+name: '# Products',
+data: <%= raw @productNumbers.to_json %>
+}]
+});
+});
+</script>
+
+<hr class="featurette-divider">
+
+<%# Chart to track Cart Data%>
+<div id="container3" style="width:100%;height:400px;">
+  <script type="text/javascript">
+    $(function () {
+      var myChart3 = Highcharts.chart('container3',{
+      chart: {
+      type: 'line'
+      },
+      title: {
+      text: 'Cart Tracker'
+      },
+      xAxis: {
+        categories: <%= raw @dates.to_json %>
+      },
+      yAxis: {
+        title: {
+        text: 'Cart data'
+        }
+      },
+      series: [{
+        name: '# Carts',
+        data: <%= raw @cartNumbers.to_json %>
+        }, {
+          name: '# Items in Carts',
+          data: <%= raw @itemInCartNumbers.to_json %>
+        }, {
+          name: 'Average # of items in a Cart',
+          data: <%= raw @averageItemInCartNumbers.to_json %>
+        }]
+      });
+    });
+  </script>
+</div>
+
+<hr class="featurette-divider">
+
+<%# Chart to track amount of products%>
+<div id="container4" style="width:100%;height:400px;">
+<script type="text/javascript">
+$(function () {
+var myChart4 = Highcharts.chart('container4',{
+chart: {
+type: 'line'
+},
+title: {
+text: 'Money Tracker'
+},
+xAxis: {
+categories: <%= raw @dates.to_json %>
+},
+yAxis: {
+title: {
+text: 'Price (£)'
+}
+},
+series: [{
+name: 'Average Product Price',
+data: <%= raw @averageProductPriceNumbers.to_json %>
+}, {
+  name: 'Average Value of Items in Carts',
+  data: <%= raw @averageCartValueNumbers.to_json %>
+}]
+});
+});
+</script>
+</div>
+
+<hr class="featurette-divider">
+
+<%# Chart to track Total Number of Records%>
+<div id="container5" style="width:100%;height:400px;">
+  <script type="text/javascript">
+      $(function () {
+          var myChart5 = Highcharts.chart('container5',{
+              chart: {
+                  type: 'line'
+              },
+              title: {
+                  text: '# Records Tracker'
+              },
+              xAxis: {
+                  categories: <%= raw @dates.to_json %>
+              },
+              yAxis: {
+                  title: {
+                      text: '# Records'
+                  }
+              },
+              series: [{
+                  name: '# Records',
+                  data: <%= raw @totalRecords.to_json %>
+              }]
+          });
+      });
+  </script>
+</div>
+
+<hr class="featurette-divider">
+
+<div class="jumbotron bg-dark mx-0 my-0, py-1">
+  <center><h4 style="color:white;">See Data in Table View</h4></center>
+  <center><%= link_to "Data Table", appdata_path, class: "btn btn-primary" %></center>
+</div>
+
+<%= link_to "Back", :back, class: "btn btn-primary", style:"margin: 10px 0px 10px 10px" %>

@@ -1,0 +1,17 @@
+<%= form_with(model: appdatainfo, local: true) do |form| %>
+  <% if appdatainfo.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(appdatainfo.errors.count, "error") %> prohibited this appdatainfo from being saved:</h2>
+
+      <ul>
+      <% appdatainfo.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="actions">
+    <%= form.submit, class="btn btn-primary" %>
+  </div>
+<% end %>

@@ -1,0 +1,31 @@
+<div class="container-fluid px-5">
+  <div class="jumbotron py-3">
+    <h1 class="Display-4" style="text-align:center;"><%= @user.name %></h1>
+
+  <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Email:</span>
+    <%= @user.email %>
+  </p>
+    <% if @usertype == "Admin" and @user.admin == true %>
+      <% if @user.id == @CurrentUser.id %>
+        <p class="lead" style="text-align:center;">
+          <span class="font-weight-bold">You are an Admin</span>
+        </p>
+      <% else %>
+        <p class="lead" style="text-align:center;">
+          <span class="font-weight-bold">This user is an Admin</span>
+        </p>
+      <% end %>
+    <% end %>
+  </div>
+
+  <% if @user.email != "admin@admin.com"%>
+    <%= link_to "Edit", edit_user_path(@user), class: "btn btn-primary" %> |
+  <% end %>
+
+  <%= link_to 'Back', :back, class: "btn btn-primary" %>
+
+  <% if @user.email != "admin@admin.com" %>
+    | <%= link_to 'Destroy', @user, method: :delete, data: { confirm: 'Are you sure?' }, class: "btn btn-primary" %>
+  <% end %>
+</div>

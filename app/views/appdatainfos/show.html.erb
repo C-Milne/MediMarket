@@ -1,0 +1,60 @@
+<div class="container-fluid px-5">
+  <div class="jumbotron bg-dark mx-0 my-1">
+      <h1 class="display-3 text-ps" style="text-align: center;"><%= "Data Collected on the #{@appdatainfo.date}" %></h1>
+  </div>
+
+  <div class="jumbotron py-3">
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Date:</span>
+      <%= @appdatainfo.date %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Number of Sellers:</span>
+      <%= @appdatainfo.numseller %>
+    </p>
+
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Number of Users:</span>
+      <%= @appdatainfo.numuser %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Number of Products:</span>
+      <%= @appdatainfo.numproduct %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Number of Carts:</span>
+      <%= @appdatainfo.numcarts %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Number of Items in Carts:</span>
+      <%= @appdatainfo.numcartitems %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Average Product Price:</span>
+      <%= @appdatainfo.averageproductprice %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Average Total of Carts:</span>
+      <%= @appdatainfo.averagecartvalue %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Average Items in a Cart:</span>
+      <%= @appdatainfo.averageitemsincart %>
+    </p>
+
+    <p class="lead" style="text-align:center;">
+      <span class="font-weight-bold">Total Amount of Reords:</span>
+      <%= @appdatainfo.totalRecords %>
+    </p>
+
+    <%= link_to "Back", :back, class: "btn btn-primary", style:"margin: 10px 0px 10px 10px" %>
+  </div>
+</div>

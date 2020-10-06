@@ -1,0 +1,52 @@
+<div class="jumbotron bg-dark mx-3 my-1">
+  <% if @usertype == "User" %>
+    <h1 class="display-3 text-ps" style="text-align: center;">My Cart</h1>
+  <% else %>
+    <h1 class="display-3 text-ps" style="text-align: center;"><%= "#{@user.name}'s Cart"%></h1>
+  <% end %>
+</div>
+
+<div class="container-fluid">
+  <%= link_to 'Keep Shopping', products_path, class: "btn btn-primary" %>
+</div>
+<hr/>
+
+<section class="section">
+
+  <% @cart.line_items.each do |item| %>
+    <div class="container-fluid">
+      <p class="cart-text">Quantity: <%= item.quantity %></p>
+      <%= link_to item.product.substancename, product_path(item.product), class: "cart-text" %>
+      <p class="cart-text">£<%= item.product.price %></p>
+      <%= button_to 'Remove', item, method: :delete, data: {confirm: "Are you sure you want to remove this item?"}, class: "btn btn-primary" %>
+
+    </div>
+    <hr class="featurette-divider">
+  <% end %>
+
+  <div class="columns">
+    <% if @cart.line_items.length >0 %>
+      <div class="column">
+        <%= button_to 'Empty Cart', @cart, method: :delete, data: { confirm: "Are you sure? " }, class: "btn btn-primary" %>
+      </div>
+    <% else %>
+      <div class="row">
+        <div class="col"></div>
+        <div class="col">
+          <h4>OH no looks like you have nothing in your cart!</h4>
+        </div>
+        <div class="col"></div>
+      </div>
+    <% end %>
+    <div class="column total has-text-right">
+      <h4 class="title is-4">
+        <span class="f5 has-text=grey">Total:</span> <%= number_to_currency(@cart.total_price, {:unit => "£"}) %>
+      </h4>
+    </div>
+  </div>
+
+</section>
+
+<% if @usertype == "Admin" %>
+  <%= link_to "Back", :back, class: "btn btn-primary", style:"margin: 10px 0px 10px 10px" %>
+<% end %>
