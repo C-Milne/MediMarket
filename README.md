@@ -2,9 +2,6 @@
 ### This app was made for demonstration purposes only. Some security gems might be out of date at time of viewing.
 ### So don't input any personal or delicate data into the app.
 
-# Viewing it elsewhere
-https://medimarket.herokuapp.com/
-
 # Next Steps
 <ul>
 <li>Add images to products - save in file space</li>
